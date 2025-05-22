@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shivanand Dasarwar - Digital Resume</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .welcome-page, .resume-page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: all 1s ease;
+    }
+
+    .welcome-page {
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .welcome-page h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 8px #333;
+    }
+
+    .welcome-page button {
+      padding: 1rem 2.5rem;
+      font-size: 1.3rem;
+      color: white;
+      background: #00bcd4;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #00bcd4;
+      animation: bounce 1.5s infinite;
+      transition: 0.4s;
+    }
+
+    .welcome-page button:hover {
+      background: #0097a7;
+      box-shadow: 0 0 30px #0097a7;
+      transform: scale(1.05);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .resume-page {
+      background: linear-gradient(to bottom, #d8b4fe, #f0f9ff);
+      padding: 2rem;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #6b21a8;
+    }
+
+    .info {
+      text-align: center;
+      margin: 10px 0 30px;
+    }
+
+    .info div {
+      margin: 5px 0;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    section h2 {
+      font-size: 22px;
+      color: #4f46e5;
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #ddd6fe;
+      color: #4c1d95;
+      padding: 5px 10px;
+      margin: 4px;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .welcome-page h1 {
+        font-size: 2rem;
+      }
+
+      .welcome-page button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="welcome-page" id="welcome">
+    <h1>Hello, I'm Shivanand 👨‍💻</h1>
+    <button onclick="showResume()">View Resume</button>
+  </div>
+
+  <div class="resume-page" id="resume">
+    <div class="container">
+      <h1>Shivanand Dasarwar</h1>
+      <div class="info">
+        <div>📞 +91-9975801081</div>
+        <div>✉️ shivananddasarwar@gmail.com</div>
+        <div>📍 Noida, India</div>
+      </div>
+
+      <section>
+        <h2>Professional Summary</h2>
+        <p>Results-driven Software Engineer with 2 years and 9 months of experience in backend development, API integration, and database management. Proficient in Node.js, SQL (Oracle, MySQL, MSSQL), and .NET framework. Currently contributing to a prestigious public sector project at Infoneo Technologies Pvt. Ltd. for GAIL Gas, India.</p>
+      </section>
+
+      <section>
+        <h2>Technical Skills</h2>
+        <div>
+          <span class="badge">Node.js</span>
+          <span class="badge">ASP.Net</span>
+          <span class="badge">C#</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">Oracle SQL</span>
+          <span class="badge">MySQL</span>
+          <span class="badge">MSSQL</span>
+          <span class="badge">Postman</span>
+          <span class="badge">SAP Integration</span>
+          <span class="badge">API Development</span>
+          <span class="badge">Application Conversion</span>
+          <span class="badge">Legacy System Migration</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Professional Experience</h2>
+        <h3>Infoneo Technologies Pvt ltd, Noida :-  GAIL Gas, India (Client Project)</h3>
+        <p><em>Software Engineer | Sep 2024 – Present</em></p>
+        <ul>
+          <li>Worked on GAIL Gas project using Node.js </li>
+          <li>Handled SAP integration and legacy upgrades</li>
+          <li>Modules: CNG-Mitra, Short-term Investment ,Tender Portal, Bill Watch System, Dak System, Vendor Empanelment</li>
+        </ul>
+
+         <h3>Dataevolve Solutions Pvt ltd :- GAIL Gas, India (Client Project)</h3>
+        <p><em>.NET & Oracle Developer | Aug 2022 – Sep 2024</em></p>
+        <ul>
+          <li>Maintained Oracle databases and .NET modules</li>
+          <li>Modules: SAP Vendor, Dak Management, Bill Watch</li>
+        </ul>
+
+        <h3>Dataevolve Solutions Pvt ltd :- Seed Fund India (Client Project)</h3>
+        <p><em>Software Developer | Aug 2022 – Sep 2024</em></p>
+        <ul>
+          <li>Developed Node.js backend services</li>
+          <li>Supported system integration and migrations</li>
+        </ul>
+
+        </section>
+
+      <section>
+        <h2>Education</h2>
+        <ul>
+          <li>M.Sc. (Computer Applications) – SRTMU, 2022 – CGPA: 9.4/10</li>
+          <li>B.Sc. (Computer Science) – SRTMU, 2017</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Languages</h2>
+        <p>English, Hindi, Marathi</p>
+      </section>
+
+      <section>
+        <h2>Personal Details</h2>
+        <ul>
+          <li>Total Experience: 2 years and 9 months</li>
+          <li>Date of Birth: Dec 12, 1994</li>
+          <li>Gender: Male</li>
+          <li>Marital Status: Single</li>
+          <li>Current Location: Noida</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function showResume() {
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("resume").style.display = "block";
+      document.body.style.overflow = "auto"; // Enable scroll for resume page
+    }
+  </script>
+
+</body>
+</html>
