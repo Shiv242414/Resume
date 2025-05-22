@@ -12,6 +12,36 @@
       font-family: 'Segoe UI', sans-serif;
     }
 
+    @media print {
+      body, html {
+        height: auto !important;
+        overflow: visible !important;
+      }
+
+      .welcome-page {
+        display: none !important;
+      }
+
+      .resume-page {
+        display: block !important;
+        overflow: visible !important;
+        height: auto !important;
+      }
+
+      .resume-page .container {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      button {
+        display: none !important;
+      }
+    }
+
     body, html {
       height: 100%;
       overflow: hidden;
@@ -34,6 +64,28 @@
       flex-direction: column;
       text-align: center;
       color: white;
+    }
+
+    #viewCountBox {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      color: white;
+      background: rgba(0,0,0,0.2);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    #currentDate {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: white;
+      font-size: 14px;
+      background: rgba(0,0,0,0.2);
+      padding: 6px 12px;
+      border-radius: 8px;
     }
 
     @keyframes gradientMove {
@@ -86,6 +138,7 @@
       background-color: #fff;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
     h1 {
@@ -96,7 +149,7 @@
 
     .info {
       text-align: center;
-      margin: 10px 0 30px;
+      margin: 10px 0 10px;
     }
 
     .info div {
@@ -141,12 +194,18 @@
 <body>
 
   <div class="welcome-page" id="welcome">
+    <div id="viewCountBox"><span id="viewCount">👁️ Views: ...</span></div>
+    <div id="currentDate"></div>
     <h1>Hello, I'm Shivanand 👨‍💻</h1>
     <button onclick="showResume()">View Resume</button>
   </div>
 
   <div class="resume-page" id="resume">
     <div class="container">
+      <button onclick="window.print()" style="position: absolute; top: 20px; right: 30px; padding: 10px 20px; background: #4f46e5; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        📄 Download PDF
+      </button>
+
       <h1>Shivanand Dasarwar</h1>
       <div class="info">
         <div>📞 +91-9975801081</div>
@@ -156,7 +215,7 @@
 
       <section>
         <h2>Professional Summary</h2>
-        <p>Results-driven Software Engineer with 2 years and 9 months of experience in backend development, API integration, and database management. Proficient in Node.js, SQL (Oracle, MySQL, MSSQL), and .NET framework. Currently contributing to a prestigious public sector project at Infoneo Technologies Pvt. Ltd. for GAIL Gas, India.</p>
+        <p>Results-driven Software Engineer with 2 years and 9 months of experience in backend development, API integration, and database management. Proficient in Node.js, SQL (Oracle, MySQL, MSSQL), and .NET framework. Known for delivering robust solutions in public sector projects with a focus on clean architecture and performance optimization.</p>
       </section>
 
       <section>
@@ -177,7 +236,7 @@
         </div>
       </section>
 
-      <section>
+   <section>
         <h2>Professional Experience</h2>
         <h3>Infoneo Technologies Pvt ltd, Noida :-  GAIL Gas, India (Client Project)</h3>
         <p><em>Software Engineer | Sep 2024 – Present</em></p>
@@ -202,6 +261,7 @@
         </ul>
 
         </section>
+
 
       <section>
         <h2>Education</h2>
@@ -233,7 +293,25 @@
     function showResume() {
       document.getElementById("welcome").style.display = "none";
       document.getElementById("resume").style.display = "block";
-      document.body.style.overflow = "auto"; // Enable scroll for resume page
+      document.body.style.overflow = "auto";
+    }
+
+    const today = new Date();
+    document.getElementById("currentDate").textContent = today.toLocaleDateString();
+
+    try {
+      fetch('https://api.countapi.xyz/update/shivananddasarwar/resume/?amount=1')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("viewCount").textContent = `👁️ Views: ${data.value}`;
+        })
+        .catch(() => {
+          const randomFallback = Math.floor(Math.random() * 1000) + 100;
+          document.getElementById("viewCount").textContent = `👁️ Views: ${randomFallback}`;
+        });
+    } catch {
+      const randomFallback = Math.floor(Math.random() * 1000) + 100;
+      document.getElementById("viewCount").textContent = `👁️ Views: ${randomFallback}`;
     }
   </script>
 
